@@ -1,6 +1,7 @@
 from dataclasses import asdict
-
 from typing import List
+from .._typing import Self
+
 import argparse
 
 class Config:
@@ -10,7 +11,7 @@ class Config:
     def __getitem__(self, key):
         return getattr(self, key)
 
-    def set_args(self, args: argparse.Namespace) -> "Self":
+    def set_args(self, args: argparse.Namespace) -> Self:
         for attribute in asdict(self):
             value = getattr(self, attribute)
             if isinstance(value, Config):
@@ -20,6 +21,6 @@ class Config:
         return self
     
     @classmethod
-    def from_args(cls, args: argparse.Namespace) -> "Self":
+    def from_args(cls, args: argparse.Namespace) -> Self:
         config = cls()
         return config.set_args(args)

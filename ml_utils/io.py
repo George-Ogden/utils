@@ -4,6 +4,7 @@ import pickle
 import os
 
 from typing import List
+from ._typing import Self
 
 class SaveableObject:
     DEFAULT_FILENAME: str = None
@@ -28,7 +29,7 @@ class SaveableObject:
             setattr(self, attribute, object)
 
     @classmethod
-    def load(cls, directory: str) -> "Self":
+    def load(cls, directory: str) -> Self:
         path = cls.get_path(directory)
         with open(path, "rb") as f:
             object = pickle.load(f)
