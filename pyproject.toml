@@ -1,0 +1,16 @@
+[project]
+name = "ml_utils"
+version = "0.1.0"
+authors = [
+    {name = "George Ogden"},
+]
+description = "machine learning utils"
+dependencies = [
+    "numpy>=1.20",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=6.2",
+    "pytest-timeout>=1.5",
+]
