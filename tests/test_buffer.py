@@ -1,6 +1,6 @@
 import numpy as np
 
-from ml_utils.buffer import Buffer
+from ml_utils import Buffer
 
 def test_buffer_ids():
     buffer = Buffer(11)

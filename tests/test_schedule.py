@@ -1,6 +1,6 @@
 import numpy as np
 
-from ml_utils.schedule import LinearSchedule, GeometricSchedule
+from ml_utils import LinearSchedule, ExponentialSchedule
 
 def test_linear_schedule():
     schedule = LinearSchedule((0.11, 1.01), (11, 101))
@@ -16,7 +16,7 @@ def test_linear_schedule():
 
 
 def test_geommetric_schedule():
-    schedule = GeometricSchedule((1e1, 1e6), (1, 6))
+    schedule = ExponentialSchedule((1e1, 1e6), (1, 6))
     assert np.allclose(schedule[1], 1e1)
     assert np.allclose(schedule[3], 1e3)
     assert np.allclose(schedule[6], 1e6)

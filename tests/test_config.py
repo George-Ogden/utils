@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import ClassVar
 
-from ml_utils.config import Config, DefaultTrainingConfig
+from ml_utils import Config, DefaultTrainingConfig
 
 def test_config_with_all_attrs():
     @dataclass

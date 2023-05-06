@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 
-from ml_utils.config.parser import ParserBuilder
-from ml_utils.config.config import Config
+from ml_utils import ParserBuilder
+from ml_utils import Config
 
 @dataclass
 class SimpleConfig(Config):

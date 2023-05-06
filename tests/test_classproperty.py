@@ -1,4 +1,4 @@
-from ml_utils.classproperty import classproperty
+from ml_utils import classproperty
 
 class Parent:
     positive = 2

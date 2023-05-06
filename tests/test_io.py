@@ -1,8 +1,7 @@
 import numpy as np
 import os
 
-
-from ml_utils.io import SaveableObject
+from ml_utils import SaveableObject
 
 from tests.config import cleanup, requires_cleanup, SAVE_DIR
 
