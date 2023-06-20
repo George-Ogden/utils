@@ -15,7 +15,7 @@ class Config:
         for attribute in asdict(self):
             value = getattr(self, attribute)
             if isinstance(value, Config):
-                setattr(self, attribute, type(value).from_args(args))
+                value.set_args(args)
             elif attribute in args:
                 setattr(self, attribute, getattr(args, attribute))
         return self
