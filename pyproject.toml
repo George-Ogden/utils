@@ -1,0 +1,20 @@
+[project]
+name = "utils"
+requires-python = ">=3.12,<3.15"
+authors = [{name = "George Ogden"}]
+license = {file = "LICENSE"}
+readme = "README.md"
+dynamic = ["dependencies", "version"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+version = {file = ["version.txt"]}
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = []
+exclude = ["test*"]

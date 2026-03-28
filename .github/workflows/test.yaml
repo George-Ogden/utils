@@ -1,0 +1,16 @@
+name: Run Python Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  run-pytest:
+    uses: George-Ogden/actions/.github/workflows/python-test.yaml@v4.2.0
+    with:
+      python-versions: "['3.13']"
+      pytest-flags: -vv -m "not local"
