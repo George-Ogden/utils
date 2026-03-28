@@ -1,4 +1,5 @@
-from .identity import identity as identity
-from .round import round as round
+from .identity import identity
+from .min_max import min_max
+from .round import round
 
-__all__ = ["identity", "round"]
+__all__ = ["identity", "min_max", "round"]
