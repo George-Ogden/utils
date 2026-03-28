@@ -16,6 +16,8 @@ from .min_max import min_max
         (4, 3, lambda x: -x, False),
         ("aaa", "bbb", len, False),
         ("bbb", "aaa", len, False),
+        (3, 4, lambda _: 0, False),
+        (4, 3, lambda _: 0, False),
     ],
 )
 def test_min_max(a: Any, b: Any, key: Callable[[Any], Any] | None, swap: bool) -> None:
@@ -48,3 +50,4 @@ def test_min_max_type_hints_with_key() -> None:
         min_max(a, b, key=None)  # type: ignore
         min_max(a, b)  # type: ignore
         min_max(a, b, key=identity)  # type: ignore
+        min_max(a, b, len)  # type:ignore
