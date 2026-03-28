@@ -8,7 +8,7 @@ def round(x: int | float, /) -> int:
     - `n + 0.5` rounds to `n + 1`
     - `-n - 0.5` rounds to `-n`
     For example:
-    ```
+    ```python
     >>> from utils import round
     >>> round(4.5)
     5

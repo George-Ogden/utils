@@ -28,7 +28,7 @@ def min_max(a: Any, b: Any, /, *, key: Callable[[Any], Any] | None = None) -> tu
     It is also possible to specify a key which is used for comparison.
     In the case of a tie, the original order is maintained.
     For example:
-    ```
+    ```python
     >>> from utils import min_max
     >>> min_max(0, 5)
     (0, 5)

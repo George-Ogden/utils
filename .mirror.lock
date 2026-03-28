@@ -1,10 +1,14 @@
 # DANGER: EDIT AT YOUR OWN RISK. Track this file in version control so that others can sync files correctly.
-- commit: 2746da4f0e3fe82316166b7eee7a55840130e7fe
+- commit: ab2546c99073f926879596346d930c266d8f8b02
   files:
+  - .github/pypi-publish.yaml
+  - .github/python-docs.yaml
   - .github/python-release.yaml
   - .github/python-test.yaml
   - .github/workflows/lint.yaml
   - LICENSE
+  - docs-placeholder.md
+  - mkdocs-template.yaml
   - mypy.ini
   - pyproject.toml
   - pytest.ini
@@ -12,6 +16,7 @@
   - python.mirror.yaml
   - python.pre-commit-config.yaml
   - requirements-dev.txt
+  - requirements-docs.txt
   - requirements.txt
   - ruff.toml
   - template-README.md

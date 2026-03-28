@@ -48,6 +48,7 @@ repos:
     rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
+        exclude: ^docs/
 
   - repo: https://github.com/rhysd/actionlint/
     rev: v1.7.11

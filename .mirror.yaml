@@ -16,3 +16,8 @@ repos:
       - requirements.txt
       - ruff.toml
       - version.txt
+      - requirements-docs.txt
+      - mkdocs.yaml: mkdocs-template.yaml
+      - docs/index.md: docs-placeholder.md
+      - .github/workflows/docs.yaml: .github/python-docs.yaml
+      - .github/workflows/pypi-publish.yaml: .github/pypi-publish.yaml
