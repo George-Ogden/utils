@@ -6,6 +6,12 @@ license = {file = "LICENSE"}
 readme = "README.md"
 dynamic = ["dependencies", "version"]
 
+[project.urls]
+Homepage = "https://github.com/George-Ogden/utils/"
+Issues = "https://github.com/George-Ogden/utils/issues/"
+Documentation = "https://george-ogden.github.io/utils/"
+Repository = "https://github.com/George-Ogden/utils.git"
+
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
 version = {file = ["version.txt"]}
