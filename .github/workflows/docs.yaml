@@ -1,0 +1,14 @@
+name: Deploy Docs
+
+on:
+  push:
+    branches:
+      - master
+  workflow_call:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-docs:
+    uses: George-Ogden/actions/.github/workflows/deploy-mkdocs.yaml@v4.3.0
