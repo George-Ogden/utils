@@ -9,7 +9,7 @@ def check_for_errors[E: BaseException](expected: type[E]) -> pytest.RaisesExc[E]
 
 
 @overload
-def check_for_errors(expected: Any) -> contextlib.nullcontext | pytest.RaisesExc[Exception]: ...
+def check_for_errors(expected: Any) -> contextlib.nullcontext | pytest.RaisesExc[BaseException]: ...
 
 
 def check_for_errors(expected: Any) -> Any:
