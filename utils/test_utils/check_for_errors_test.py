@@ -2,7 +2,7 @@ from typing import Any, assert_type
 
 import pytest
 
-from .test_utils import check_for_assertion_errors, check_for_errors
+from .check_for_errors import check_for_assertion_errors, check_for_errors
 
 
 @pytest.mark.xfail(strict=True)
