@@ -24,3 +24,6 @@ build-backend = "setuptools.build_meta"
 where = ["."]
 include = ["utils*"]
 exclude = ["test*"]
+
+[project.entry-points.pytest11]
+utils = "utils.plugins.pytest_plugin"
