@@ -24,7 +24,7 @@ class TestCaseSample(NamedTuple):
         return cls(float("nan"), False)
 
 
-TestCaseSample.__test__ = False
+TestCaseSample.__test__ = False  # type: ignore[attr-defined]
 
 
 @pytest.mark.parametrize("case", TestCaseSample.cases())

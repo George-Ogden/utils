@@ -16,9 +16,11 @@ def cases[Self: type](cls: Self) -> Iterable[ParameterSet[Self]]:
             yield pytest.param(method(), id=name)
 
 
+# Typing for this currently requires a plugin,
+# but this will not be necessary when intersection types are supported in Python.
 def test_case[T: type](cls: T) -> T:
     cls.cases = classmethod(cases)  # type: ignore [attr-defined]
     return final(cls)
 
 
-test_case.__test__ = False
+test_case.__test__ = False  # type: ignore[attr-defined]
