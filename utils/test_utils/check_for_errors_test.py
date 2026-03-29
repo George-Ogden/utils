@@ -1,4 +1,4 @@
-from typing import Any, assert_type
+from typing import assert_type
 
 import pytest
 
@@ -29,14 +29,14 @@ def test_check_for_errors_incorrect_error() -> None:
 @pytest.mark.typed
 def test_check_for_errors_all_fine() -> None:
     with check_for_errors(None) as e:
-        assert_type(e, Any | pytest.ExceptionInfo[BaseException])
+        assert_type(e, pytest.ExceptionInfo[BaseException] | None)
         assert True
 
 
 @pytest.mark.xfail(strict=True, raises=AssertionError)
 def test_check_for_errors_not_fine() -> None:
     with check_for_errors(None) as e:
-        assert_type(e, Any | pytest.ExceptionInfo[BaseException])
+        assert_type(e, pytest.ExceptionInfo[BaseException] | None)
         raise AssertionError()
 
 
@@ -57,12 +57,12 @@ def test_check_for_assertion_errors_assertion_error() -> None:
 @pytest.mark.typed
 def test_check_for_assertion_errors_all_fine() -> None:
     with check_for_assertion_errors(1) as e:
-        assert_type(e, Any | pytest.ExceptionInfo[AssertionError])
+        assert_type(e, pytest.ExceptionInfo[AssertionError] | None)
         assert True
 
 
 @pytest.mark.xfail(strict=True, raises=AssertionError)
 def test_check_for_assertion_errors_not_fine() -> None:
     with check_for_assertion_errors(1) as e:
-        assert_type(e, Any | pytest.ExceptionInfo[AssertionError])
+        assert_type(e, pytest.ExceptionInfo[AssertionError] | None)
         raise AssertionError()

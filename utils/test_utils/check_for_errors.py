@@ -9,7 +9,9 @@ def check_for_errors[E: BaseException](expected: type[E]) -> pytest.RaisesExc[E]
 
 
 @overload
-def check_for_errors(expected: Any) -> contextlib.nullcontext | pytest.RaisesExc[BaseException]: ...
+def check_for_errors(
+    expected: Any,
+) -> contextlib.nullcontext[None] | pytest.RaisesExc[BaseException]: ...
 
 
 def check_for_errors(expected: Any) -> Any:
@@ -41,7 +43,7 @@ def check_for_assertion_errors(expected: None) -> pytest.RaisesExc[AssertionErro
 @overload
 def check_for_assertion_errors(
     expected: Any,
-) -> contextlib.nullcontext | pytest.RaisesExc[AssertionError]: ...
+) -> contextlib.nullcontext[None] | pytest.RaisesExc[AssertionError]: ...
 
 
 def check_for_assertion_errors(expected: Any) -> Any:
