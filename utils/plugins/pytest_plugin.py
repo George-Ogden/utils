@@ -41,3 +41,13 @@ def manual_seed(seed: int) -> int:
     else:
         th.random.manual_seed(seed)
     return seed
+
+
+@pytest.fixture
+def test_path(request: pytest.FixtureRequest) -> Path:
+    return request.path
+
+
+@pytest.fixture
+def test_dir(test_path: Path) -> Path:
+    return test_path.parent

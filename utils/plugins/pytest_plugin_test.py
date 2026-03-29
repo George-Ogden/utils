@@ -7,7 +7,11 @@ from debug import CONFIG
 import pytest
 
 from .pytest_plugin import filepath as filepath
+from .pytest_plugin import manual_seed as manual_seed
+from .pytest_plugin import seed as seed
 from .pytest_plugin import setup_debug as setup_debug
+from .pytest_plugin import test_dir as test_dir
+from .pytest_plugin import test_path as test_path
 
 
 @pytest.mark.parametrize("filename", ["filename.py", "thispathdoesnotexist.txt", "nested/folder"])
@@ -37,9 +41,19 @@ def test_manual_seed(seed: int) -> None:
 
 
 @pytest.mark.parametrize("seed", range(5))
-def test_manual_seed_value(seed: int, manual_seed: int) -> None:  # type:ignore[missing-argname]
+def test_manual_seed_value(seed: int, manual_seed: int) -> None:
     assert manual_seed == seed
     pre_seeded = [random.random() for _ in range(10)]
     random.seed(seed)
     seeded = [random.random() for _ in range(10)]
     assert pre_seeded == seeded
+
+
+@pytest.mark.typed
+def test_test_path(test_path: Path) -> None:
+    assert test_path == Path("utils/plugins/pytest_plugin_test.py").absolute()
+
+
+@pytest.mark.typed
+def test_test_dir(test_dir: Path) -> None:
+    assert test_dir == Path("utils/plugins").absolute()
