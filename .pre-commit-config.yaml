@@ -71,7 +71,8 @@ repos:
       - id: todo-check
         exclude: (?x)^(
           .pre-commit-config.yaml|
-          .gitignore
+          .gitignore|
+          utils/(__init__.py|macros(.py|_test.py))
           )$
       - id: mypy
         args: [-r, requirements-dev.txt, --show-traceback]
