@@ -72,7 +72,7 @@ repos:
         exclude: (?x)^(
           .pre-commit-config.yaml|
           .gitignore|
-          utils/(__init__.py|macros(.py|_test.py))
+          utils/(__init__.py|errors(.py|_test.py))
           )$
       - id: mypy
         args: [-r, requirements-dev.txt, --show-traceback]
