@@ -99,5 +99,5 @@ def test_dir(test_path: Path) -> Path:
 
 @pytest.fixture(autouse=True)
 def reset_global_id() -> None:
-    """Reset global ids between 0 on each test."""
+    """Reset all `AutoId` subclasses between each test."""
     AutoId._reset_all_global_ids()

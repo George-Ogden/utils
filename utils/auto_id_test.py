@@ -38,12 +38,12 @@ def test_auto_id_reset_non_zero() -> None:
     @dataclass(frozen=True)
     class AutoIdCustomSubclass(AutoId[str]):
         @classmethod
-        def _global_id_default_value(cls) -> str:
+        def _id_default_value(cls) -> str:
             return ""
 
         @classmethod
-        def _increment_global_id(cls) -> None:
-            cls._global_id += "1"
+        def _increment_id(cls, id: str) -> str:
+            return id + "1"
 
     assert AutoIdCustomSubclass._global_id == ""  # type:ignore[misc]
     assert AutoIdCustomSubclass.next_id() == ""
