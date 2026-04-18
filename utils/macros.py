@@ -1,5 +1,5 @@
 from typing import NoReturn
 
 
-def unimplemented() -> NoReturn:
-    raise NotImplementedError()
+def unimplemented(*args: object) -> NoReturn:
+    raise NotImplementedError(*args)
