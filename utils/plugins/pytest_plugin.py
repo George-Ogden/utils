@@ -8,6 +8,8 @@ import random
 
 import pytest
 
+from .. import AutoId
+
 
 @pytest.fixture(autouse=True, scope="session")
 def setup_debug() -> None:
@@ -93,3 +95,9 @@ def test_path(request: pytest.FixtureRequest) -> Path:
 def test_dir(test_path: Path) -> Path:
     """Returns the path of directory of the test that is being set up."""
     return test_path.parent
+
+
+@pytest.fixture(autouse=True)
+def reset_global_id() -> None:
+    """Reset global ids between 0 on each test."""
+    AutoId._reset_all_global_ids()
