@@ -1,3 +1,4 @@
+from .cached_iterator import cached_iterator
 from .compose import compose
 from .decrement import decrement
 from .errors import NotImplementedYetError, todo, unimplemented
@@ -8,6 +9,7 @@ from .round import round
 
 __all__ = [
     "NotImplementedYetError",
+    "cached_iterator",
     "compose",
     "decrement",
     "identity",
