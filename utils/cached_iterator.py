@@ -1,18 +1,17 @@
-from __future__ import annotations
-
 from collections.abc import Callable, Iterable, Sequence
 import functools
-from typing import Final
+from typing import Final, cast
 
 from .compose import compose
 
 _CACHED_ITERATOR_TYPE: Final[type[tuple]] = tuple
 
 
-def cached_iterator[T](fn: Callable[..., Iterable[T]]) -> functools._lru_cache_wrapper[Sequence[T]]:
+def cached_iterator[**P, T](fn: Callable[P, Iterable[T]]) -> Callable[P, Sequence[T]]:
     """
     Cache an iterator by storing all the resulting elements as a tuple.
     This works as on plain functions, or as an instance method, `property`, `classmethod` or other descriptor.
+    This uses `functools.lru_cache` to implement the cache and so methods such as `cache_clear` are still valid.
 
     Example use:
     ```python
@@ -28,4 +27,7 @@ def cached_iterator[T](fn: Callable[..., Iterable[T]]) -> functools._lru_cache_w
     assert squares(5) is squares(5) # cached
     ```
     """
-    return functools.lru_cache(typed=True)(compose(_CACHED_ITERATOR_TYPE, fn))
+    return cast(
+        Callable[P, Sequence[T]],
+        functools.lru_cache(typed=True)(compose(_CACHED_ITERATOR_TYPE, fn)),
+    )
