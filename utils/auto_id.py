@@ -1,4 +1,10 @@
-from typing import ClassVar, Generic, TypeVar, cast
+import sys
+from typing import ClassVar, Generic, cast
+
+if sys.version_info >= (3, 13):
+    from typing import TypeVar
+else:
+    from typing_extensions import TypeVar
 
 from extra_types.types import Nat
 
