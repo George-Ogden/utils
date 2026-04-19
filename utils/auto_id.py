@@ -1,9 +1,11 @@
-from typing import ClassVar, cast
+from typing import ClassVar, Generic, TypeVar, cast
 
 from extra_types.types import Nat
 
+T = TypeVar("T", default=Nat)
 
-class AutoId[T = Nat]:
+
+class AutoId(Generic[T]):
     """
     A class that has a global id that can be reset and incremented.
     It defaults to using the natural numbers (0, 1, 2, ...) but this can be overridden.
