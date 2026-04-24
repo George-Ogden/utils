@@ -6,6 +6,7 @@ Install with `uv pip install georges-utils`.
 
 ::: utils
 ::: utils.NotImplementedYetError
+::: utils.UnreachableError
 ::: utils.cached_iterator
 ::: utils.compose
 ::: utils.identity
