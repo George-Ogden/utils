@@ -1,4 +1,6 @@
 # Specific Files
+scratch*
+.merge_file*
 tmp.py
 log.txt
 stdout.txt
