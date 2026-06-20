@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from collections.abc import Iterable
 import inspect
 from typing import TYPE_CHECKING, final
 
@@ -10,14 +9,21 @@ if TYPE_CHECKING:
     from mypy_pytest_plugin_types import ParameterSet
 
 
-def _cases[Self: type](cls: Self) -> Iterable[ParameterSet[Self]]:
-    for name, method in inspect.getmembers(cls, predicate=inspect.ismethod):
-        if name != "cases" and not name.startswith("_"):
-            yield pytest.param(method(), id=name)
+def _marks_for(name: str) -> tuple[()] | pytest.MarkDecorator:
+    if name.endswith("xfail"):
+        return pytest.mark.xfail(strict=True)
+    return ()
 
 
-# Typing for this currently requires a plugin,
-# but this will not be necessary when intersection types are supported in Python.
+def _cases[Self: type](cls: Self) -> list[ParameterSet[Self]]:
+    return [
+        pytest.param(method(), id=name, marks=_marks_for(name))
+        for name, method in inspect.getmembers(cls, predicate=inspect.ismethod)
+        if name != "cases" and not name.startswith("_")
+    ]
+
+
+@pytest.mark.typed
 def test_case[T: type](cls: T) -> T:
     """
     The `@test_case` decorator is experimental and under development.
@@ -72,8 +78,9 @@ def test_case[T: type](cls: T) -> T:
     plugins = mypy_pytest_plugin, utils.plugins.mypy_plugin
     ```
     """
-    cls.cases = classmethod(_cases)  # type: ignore [attr-defined]
+    if not hasattr(cls, "cases"):
+        cls.cases = classmethod(_cases)  # type: ignore [attr-defined]
     return final(cls)
 
 
-test_case.__test__ = False  # type: ignore[attr-defined]
+test_case.__test__ = False

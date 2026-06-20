@@ -48,7 +48,7 @@ repos:
         args: [--severity=warning]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit/
-    rev: v0.15.15
+    rev: v0.15.18
     hooks:
       - id: ruff-check
         args: [--fix]
@@ -72,7 +72,7 @@ repos:
       - id: codespell
 
   - repo: https://github.com/George-Ogden/pre-commit-hooks/
-    rev: v4.0.0
+    rev: v4.1.1
     hooks:
       - id: dbg-check
       - id: todo-check
@@ -86,3 +86,4 @@ repos:
       - id: spell-check-commit-msgs
       - id: mirror-auto-msg
       - id: version-txt-auto-msg
+      - id: list-untracked-files
