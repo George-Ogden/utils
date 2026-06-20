@@ -21,14 +21,15 @@ class TestCasePlugin(Plugin):
 
     @classmethod
     def test_case_decorator_hook(cls, ctx: ClassDefContext) -> bool:
-        add_method_to_class(
-            ctx.api,
-            ctx.cls,
-            name="cases",
-            args=[],
-            return_type=cls.cases_return_type(ctx),
-            is_classmethod=True,
-        )
+        if "cases" not in ctx.cls.info.names:
+            add_method_to_class(
+                ctx.api,
+                ctx.cls,
+                name="cases",
+                args=[],
+                return_type=cls.cases_return_type(ctx),
+                is_classmethod=True,
+            )
         ctx.cls.info.is_final = True
         return True
 

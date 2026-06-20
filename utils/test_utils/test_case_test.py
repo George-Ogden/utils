@@ -156,9 +156,9 @@ class CasesOverride(NamedTuple):
 @pytest.mark.typed
 def test_cases_overriden() -> None:
     params = CasesOverride.cases()
-    assert params == list(range(1, 6))  # type: ignore[comparison-overlap]
+    assert params == list(range(1, 6))
 
 
-@pytest.mark.parametrize("case", CasesOverride.cases())  # type: ignore[arg-type]
+@pytest.mark.parametrize("case", CasesOverride.cases())
 def test_override_test_case(case: int) -> None:
     assert case in list(range(1, 6))
