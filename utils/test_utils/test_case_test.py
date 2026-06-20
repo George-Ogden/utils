@@ -26,9 +26,6 @@ class TestCaseSample(NamedTuple):
         return cls(float("nan"), False)
 
 
-TestCaseSample.__test__ = False  # type: ignore[attr-defined]
-
-
 @pytest.mark.parametrize("case", TestCaseSample.cases())
 def test_test_case_sample_cases(case: TestCaseSample) -> None:
     assert isinstance(case, TestCaseSample)
@@ -36,8 +33,8 @@ def test_test_case_sample_cases(case: TestCaseSample) -> None:
 
 
 def test_test_case_sample_length() -> None:
-    assert mit.ilen(TestCaseSample.cases()) == 2
-    assert mit.all_unique(TestCaseSample.cases())
+    assert len(TestCaseSample.cases()) == 2
+    assert mit.all_unique(TestCaseSample.cases())  # type: ignore[iterable-sequence]
 
 
 @test_case
@@ -129,7 +126,9 @@ class BoolTestCase(NamedTuple):
         return cls(True)
 
     @classmethod
-    def wrong_type_xfail(cls) -> None: ...
+    def wrong_type_xfail(cls) -> None:  # type: ignore[test-case]
+        # Keep type ignore comment to ensure Mypy plugin detects error.
+        ...
 
 
 @pytest.mark.typed
