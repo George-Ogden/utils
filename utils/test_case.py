@@ -4,14 +4,22 @@ from typing import TYPE_CHECKING, final
 import pytest
 
 if TYPE_CHECKING:
+    from _pytest.mark.structures import _XfailMarkDecorator
     from mypy_pytest_plugin_types import ParameterSet
 
 
+def _marks_for(name: str) -> tuple[()] | type["_XfailMarkDecorator"]:
+    if name.endswith("xfail"):
+        return pytest.mark.xfail(strict=True)
+    return ()
+
+
 def cases[Self: type](cls: Self) -> list["ParameterSet[Self]"]:
-    for name, method in inspect.getmembers(cls, predicate=inspect.ismethod):
-        if name != "cases" and not name.startswith("_"):
-            marks = pytest.mark.xfail(strict=True) if name.endswith("xfail") else ()
-            yield pytest.param(method(), id=name, marks=marks)
+    return [
+        pytest.param(method(), id=name, marks=_marks_for(name))
+        for name, method in inspect.getmembers(cls, predicate=inspect.ismethod)
+        if name != "cases" and not name.startswith("_")
+    ]
 
 
 @pytest.mark.typed
