@@ -1,5 +1,5 @@
 # DANGER: EDIT AT YOUR OWN RISK. Track this file in version control so that others can sync files correctly.
-- commit: 9357673e8b152e5dda57f14ab05154748b15957e
+- commit: 23aeab83dec02be4dee00ff3e958f16de1122a15
   files:
   - .github/pypi-publish.yaml
   - .github/python-docs.yaml
