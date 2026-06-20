@@ -6,11 +6,10 @@ from typing import TYPE_CHECKING, final
 import pytest
 
 if TYPE_CHECKING:
-    from _pytest.mark.structures import _XfailMarkDecorator
     from mypy_pytest_plugin_types import ParameterSet
 
 
-def _marks_for(name: str) -> tuple[()] | type[_XfailMarkDecorator]:
+def _marks_for(name: str) -> tuple[()] | pytest.MarkDecorator:
     if name.endswith("xfail"):
         return pytest.mark.xfail(strict=True)
     return ()
